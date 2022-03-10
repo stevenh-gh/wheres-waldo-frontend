@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
+import Play from "./Play";
 
 const RouteSwitch = () => {
     useEffect(() => {
@@ -11,6 +12,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} />
+                <Route path="play" element={<Play />} />
             </Routes>
         </BrowserRouter>
     );
