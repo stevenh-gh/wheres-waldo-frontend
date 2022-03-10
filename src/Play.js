@@ -1,8 +1,14 @@
+import { useRef } from "react";
+
 const Play = () => {
+    const menuRef = useRef();
+
     const handleClick = (e) => {
         console.log(e.target.dataset.index);
-        console.log(e.clientX);
-        console.log(e.clientY);
+        const menu = menuRef.current;
+        menu.style.top = `${e.clientY}px`;
+        menu.style.left = `${e.clientX}px`;
+        menu.classList.remove("hidden");
     };
 
     return (
@@ -19,6 +25,13 @@ const Play = () => {
                         ></div>
                     );
                 })}
+            </div>
+            <div
+                className="border border-black h-[250px] w-[250px] absolute hidden"
+                id="menu"
+                ref={menuRef}
+            >
+                clicked
             </div>
         </>
     );
