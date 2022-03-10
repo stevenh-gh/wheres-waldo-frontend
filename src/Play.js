@@ -1,4 +1,10 @@
 const Play = () => {
+    const handleClick = (e) => {
+        console.log(e.target.dataset.index);
+        console.log(e.clientX);
+        console.log(e.clientY);
+    };
+
     return (
         <>
             <div>the game page</div>
@@ -8,6 +14,8 @@ const Play = () => {
                         <div
                             className="hover:border hover:border-blue-500"
                             key={index}
+                            data-index={index}
+                            onClick={handleClick}
                         ></div>
                     );
                 })}
