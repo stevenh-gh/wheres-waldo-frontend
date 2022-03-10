@@ -1,13 +1,28 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Play = () => {
     const menuRef = useRef();
 
+    useEffect(() => {
+        const handleKeydown = (e) => {
+            if (e.keyCode === 27) {
+                const menu = menuRef.current;
+                menu.classList.add("hidden");
+            }
+        };
+        document.addEventListener("keydown", handleKeydown);
+        return () => {
+            document.removeEventListener("keydown", handleKeydown);
+        };
+    }, []);
+
     const handleClick = (e) => {
-        console.log(e.target.dataset.index);
         const menu = menuRef.current;
+
+        console.log(e.target.dataset.index);
         menu.style.top = `${e.clientY}px`;
         menu.style.left = `${e.clientX}px`;
+        menu.innerText = e.target.dataset.index;
         menu.classList.remove("hidden");
     };
 
@@ -30,9 +45,7 @@ const Play = () => {
                 className="border border-black h-[250px] w-[250px] absolute hidden"
                 id="menu"
                 ref={menuRef}
-            >
-                clicked
-            </div>
+            ></div>
         </>
     );
 };
