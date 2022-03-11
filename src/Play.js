@@ -22,7 +22,7 @@ const Play = () => {
         console.log(e.target.dataset.index);
         menu.style.top = `${e.clientY}px`;
         menu.style.left = `${e.clientX}px`;
-        menu.innerText = e.target.dataset.index;
+        // menu.innerText = e.target.dataset.index;
         menu.classList.remove("hidden");
     };
 
@@ -42,10 +42,17 @@ const Play = () => {
                 })}
             </div>
             <div
-                className="border border-black h-[250px] w-[250px] absolute hidden"
+                className="border border-black h-[100px] w-[100px] absolute hidden bg-yellow-400 rounded-md"
                 id="menu"
                 ref={menuRef}
-            ></div>
+            >
+                <ul className="ml-3">
+                    <li>Waldo</li>
+                    <li>Woof</li>
+                    <li>Wilma</li>
+                    <li>Odlaw</li>
+                </ul>
+            </div>
         </>
     );
 };
