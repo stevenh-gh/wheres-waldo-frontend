@@ -52,34 +52,18 @@ const Play = () => {
                 ref={menuRef}
             >
                 <ul>
-                    <li
-                        onClick={handleCharacterClick}
-                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
-                        data-selection="waldo"
-                    >
-                        Waldo
-                    </li>
-                    <li
-                        onClick={handleCharacterClick}
-                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
-                        data-selection="woof"
-                    >
-                        Woof
-                    </li>
-                    <li
-                        onClick={handleCharacterClick}
-                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
-                        data-selection="wilma"
-                    >
-                        Wilma
-                    </li>
-                    <li
-                        onClick={handleCharacterClick}
-                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
-                        data-selection="odlaw"
-                    >
-                        Odlaw
-                    </li>
+                    {["Waldo", "Woof", "Wilma", "Odlaw"].map((ele, idx) => {
+                        return (
+                            <li
+                                onClick={handleCharacterClick}
+                                className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
+                                data-selection={ele.toLowerCase()}
+                                key={idx}
+                            >
+                                {ele}
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </>
