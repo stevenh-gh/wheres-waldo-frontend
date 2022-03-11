@@ -16,7 +16,7 @@ const Play = () => {
         };
     }, []);
 
-    const handleClick = (e) => {
+    const handleMenuClick = (e) => {
         const menu = menuRef.current;
 
         console.log(e.target.dataset.index);
@@ -24,6 +24,11 @@ const Play = () => {
         menu.style.left = `${e.clientX}px`;
         // menu.innerText = e.target.dataset.index;
         menu.classList.remove("hidden");
+    };
+
+    const handleCharacterClick = (e) => {
+        console.log(e.target.dataset.selection);
+        menuRef.current.classList.add("hidden");
     };
 
     return (
@@ -36,7 +41,7 @@ const Play = () => {
                             className="hover:border hover:border-blue-500"
                             key={index}
                             data-index={index}
-                            onClick={handleClick}
+                            onClick={handleMenuClick}
                         ></div>
                     );
                 })}
@@ -46,11 +51,35 @@ const Play = () => {
                 id="menu"
                 ref={menuRef}
             >
-                <ul className="ml-3">
-                    <li>Waldo</li>
-                    <li>Woof</li>
-                    <li>Wilma</li>
-                    <li>Odlaw</li>
+                <ul>
+                    <li
+                        onClick={handleCharacterClick}
+                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
+                        data-selection="waldo"
+                    >
+                        Waldo
+                    </li>
+                    <li
+                        onClick={handleCharacterClick}
+                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
+                        data-selection="woof"
+                    >
+                        Woof
+                    </li>
+                    <li
+                        onClick={handleCharacterClick}
+                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
+                        data-selection="wilma"
+                    >
+                        Wilma
+                    </li>
+                    <li
+                        onClick={handleCharacterClick}
+                        className="hover:bg-yellow-200 hover:cursor-pointer pl-3"
+                        data-selection="odlaw"
+                    >
+                        Odlaw
+                    </li>
                 </ul>
             </div>
         </>
