@@ -17,11 +17,15 @@ const App = () => {
         <>
             <h2>Choose a level</h2>
             {jsonData.map((ele, idx) => {
-                return <img key={idx} src={ele.img} alt="" />;
+                return (
+                    <Link key={idx} to={`/play/${ele.id}`}>
+                        <div
+                            className="w-[900px] h-[556px] bg-contain bg-no-repeat hover:scale-105"
+                            style={{ backgroundImage: `url(${ele.img})` }}
+                        ></div>
+                    </Link>
+                );
             })}
-            {/* <Link to="/play">
-                <div className="bg-[url('../public/waldo.jpeg')] w-[900px] h-[556px] bg-contain bg-no-repeat hover:scale-105"></div>
-            </Link> */}
         </>
     );
 };
