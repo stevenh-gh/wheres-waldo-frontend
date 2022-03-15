@@ -12,7 +12,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} />
-                <Route path="play" element={<Play />} />
+                <Route path="play/:id" element={<Play />} />
             </Routes>
         </BrowserRouter>
     );
