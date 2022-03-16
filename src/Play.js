@@ -1,7 +1,20 @@
+import { useState } from "react";
 import { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 
 const Play = () => {
     const menuRef = useRef();
+    const params = useParams();
+    const [jsonData, setJsonData] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/games/${params.id}`)
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((resp) => setJsonData(resp))
+            .catch((resp) => console.log(resp));
+    }, []);
 
     useEffect(() => {
         const handleKeydown = (e) => {
