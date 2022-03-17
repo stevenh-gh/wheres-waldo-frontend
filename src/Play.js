@@ -6,6 +6,7 @@ const Play = () => {
     const menuRef = useRef();
     const params = useParams();
     const [jsonData, setJsonData] = useState({});
+    const [cell, setCell] = useState();
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/games/${params.id}`)
@@ -35,12 +36,13 @@ const Play = () => {
         console.log(e.target.dataset.index);
         menu.style.top = `${e.clientY}px`;
         menu.style.left = `${e.clientX}px`;
-        // menu.innerText = e.target.dataset.index;
+        setCell(e.target.dataset.index);
         menu.classList.remove("hidden");
     };
 
     const handleCharacterClick = (e) => {
         console.log(e.target.dataset.selection);
+        console.log(jsonData[e.target.dataset.selection].includes(cell));
         menuRef.current.classList.add("hidden");
     };
 
